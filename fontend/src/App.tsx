@@ -6,12 +6,12 @@ function App() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
 
-  const userId = '840033936';
+  const userId = '8400339361';
 
 
   const fetchChannels = async () => {
     try {
-      const response = await fetch(`https://localhost:3001/api/channels/${userId}`);
+      const response = await fetch(`http://localhost:3001/api/channels/${userId}`);
       
       if (!response.ok) {
         throw new Error('No channels found. Please register.');
@@ -41,6 +41,12 @@ function App() {
 
   return (
     <div className="App">
+      <script src="https://telegram.org/js/telegram-web-app.js"></script>
+      <script>
+          let tg = window.Telegram.WebApp.initData.user.username;
+          document.getElementById('root').innerHTML = window.Telegram.WebApp.initData.user.username;
+      </script>
+
       <header className="App-header">
         {error ? (
           <div>
